@@ -42,8 +42,8 @@ Add PiAgentCore and PiAI to your `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/<owner>/pi-agent-swift.git", from: "0.1.0"),
-    .package(url: "https://github.com/<owner>/pi-ai-swift.git", from: "0.1.0")
+    .package(url: "https://github.com/quyansiyuanwang/pi-agent-swift.git", from: "0.1.0"),
+    .package(url: "https://github.com/quyansiyuanwang/pi-ai-swift.git", from: "0.1.0")
 ],
 targets: [
     .target(name: "MyApp", dependencies: ["PiAgentCore", "PiAI"])
