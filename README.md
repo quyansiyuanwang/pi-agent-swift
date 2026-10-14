@@ -1,5 +1,7 @@
 # PiAgentCore
 
+[![CI](https://github.com/quyansiyuanwang/pi-agent-swift/actions/workflows/ci.yml/badge.svg)](https://github.com/quyansiyuanwang/pi-agent-swift/actions/workflows/ci.yml)
+
 A native Swift port of the agent runtime from
 [`@earendil-works/pi-agent-core`](https://github.com/earendil-works/pi)
 (upstream version **1.2.0**, MIT).
