@@ -59,6 +59,26 @@ struct AgentTests {
         #expect(context?.tools.first?.name == "add")
     }
 
+    @Test("setTranscript replaces the transcript")
+    func setTranscriptReplaces() async throws {
+        let provider = MockProvider(steps: [.message(makeAssistant(text: "one"))])
+        let agent = Agent(options: AgentOptions(model: Fixtures.model, provider: provider))
+
+        try await agent.prompt("first")
+        #expect(await agent.transcript.count == 2)
+
+        let seeded: [Message] = [
+            .user(UserMessage(content: "hello", timestamp: 1)),
+            .assistant(makeAssistant(text: "hi there")),
+        ]
+        await agent.setTranscript(seeded)
+
+        let transcript = await agent.transcript
+        #expect(transcript.count == 2)
+        #expect(transcript.first == seeded.first)
+        #expect(transcript.last == seeded.last)
+    }
+
     @Test("reset is a no-op while streaming")
     func resetDuringRunIsNoOp() async throws {
         let provider = MockProvider(steps: [.hang, .hang])

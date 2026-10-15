@@ -101,6 +101,15 @@ public actor Agent {
         messages.removeAll()
     }
 
+    /// Replaces the transcript with `messages`.
+    ///
+    /// Used to restore a previously saved conversation. Does nothing while a
+    /// run is in flight.
+    public func setTranscript(_ messages: [Message]) {
+        guard !streaming else { return }
+        self.messages = messages
+    }
+
     // MARK: - Event emission
 
     private nonisolated func emit(_ event: AgentEvent) {
